@@ -1,0 +1,1342 @@
+<!DOCTYPE html>
+<html>
+<head>
+    
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+    <script src="https://cdn.jsdelivr.net/npm/leaflet@1.9.3/dist/leaflet.js"></script>
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/leaflet@1.9.3/dist/leaflet.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="https://netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap-glyphicons.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.2.0/css/all.min.css"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/python-visualization/folium/folium/templates/leaflet.awesome.rotate.min.css"/>
+    
+            <meta name="viewport" content="width=device-width,
+                initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+            <style>
+                #map_cb9efb939087d4a2ba8f2e0ef33dab41 {
+                    position: relative;
+                    width: 100.0%;
+                    height: 100.0%;
+                    left: 0.0%;
+                    top: 0.0%;
+                }
+                .leaflet-container { font-size: 1rem; }
+            </style>
+
+            <style>html, body {
+                width: 100%;
+                height: 100%;
+                margin: 0;
+                padding: 0;
+            }
+            </style>
+
+            <style>#map {
+                position:absolute;
+                top:0;
+                bottom:0;
+                right:0;
+                left:0;
+                }
+            </style>
+
+            <script>
+                L_NO_TOUCH = false;
+                L_DISABLE_3D = false;
+            </script>
+
+        
+</head>
+<body>
+    
+    
+<div style='position: absolute; top: 200px; right: 10px; z-index:9999; background:white;
+padding:10px; border:1px solid #aaa; border-radius:8px;'>
+<div><span style='background:green; width:12px; height:12px; display:inline-block; border-radius:50%; margin-right:5px;'></span>Écoles Agro</div>
+<div><span style='background:blue; width:12px; height:12px; display:inline-block; border-radius:50%; margin-right:5px;'></span>Écoles Véto</div>
+<div><span style='background:orange; width:12px; height:12px; display:inline-block; border-radius:50%; margin-right:5px;'></span>Écoles G2E</div>
+<div><span style='background:red; width:12px; height:12px; display:inline-block; border-radius:50%; margin-right:5px;'></span>Écoles Polytech</div>
+<div><span style='background:purple; width:12px; height:12px; display:inline-block; border-radius:50%; margin-right:5px;'></span>Écoles INSA</div>
+<div><span style='background:beige; width:12px; height:12px; display:inline-block; border-radius:50%; margin-right:5px;'></span>Université</div>
+</div>
+    
+            <div class="folium-map" id="map_cb9efb939087d4a2ba8f2e0ef33dab41" ></div>
+        
+</body>
+<script>
+    
+    
+            var map_cb9efb939087d4a2ba8f2e0ef33dab41 = L.map(
+                "map_cb9efb939087d4a2ba8f2e0ef33dab41",
+                {
+                    center: [46.6, 2.2],
+                    crs: L.CRS.EPSG3857,
+                    ...{
+  "zoom": 6,
+  "zoomControl": true,
+  "preferCanvas": false,
+}
+
+                }
+            );
+
+            
+
+        
+    
+            var tile_layer_f48a097f22f74caa6e1d0202f9907d1c = L.tileLayer(
+                "https://tile.openstreetmap.org/{z}/{x}/{y}.png",
+                {
+  "minZoom": 0,
+  "maxZoom": 19,
+  "maxNativeZoom": 19,
+  "noWrap": false,
+  "attribution": "\u0026copy; \u003ca href=\"https://www.openstreetmap.org/copyright\"\u003eOpenStreetMap\u003c/a\u003e contributors",
+  "subdomains": "abc",
+  "detectRetina": false,
+  "tms": false,
+  "opacity": 1,
+}
+
+            );
+        
+    
+            tile_layer_f48a097f22f74caa6e1d0202f9907d1c.addTo(map_cb9efb939087d4a2ba8f2e0ef33dab41);
+        
+    
+            var feature_group_f05a8d2138b5237f6a511215a8f936f4 = L.featureGroup(
+                {
+}
+            );
+        
+    
+            var marker_3aa5e3daa9322dce4d52d37ab0964e89 = L.marker(
+                [48.85, 2.32],
+                {
+}
+            ).addTo(feature_group_f05a8d2138b5237f6a511215a8f936f4);
+        
+    
+            var icon_5ca75a4558991136255d6f45607807ea = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "green",
+  "iconColor": "white",
+  "icon": "leaf",
+  "prefix": "fa",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_68507c6e4379559e543871ab80b6ca94 = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_8b4234b42d1e6d3dedb37b22f6dd04d2 = $(`<div id="html_8b4234b42d1e6d3dedb37b22f6dd04d2" style="width: 100.0%; height: 100.0%;">     <div style='border:2px solid green; border-radius:8px; padding:10px; max-width:250px; font-size:13px;'>         <b>AgroParisTech</b><br>         <i>Paris</i><br>         Grande école d’ingénieurs en agronomie, agroalimentaire, environnement et sciences du vivant.<br>         <a href="https://www.agroparistech.fr" target="_blank">https://www.agroparistech.fr</a><br>         <small><b>Voies d'accès :</b> BCPST + TB</small>     </div>     </div>`)[0];
+                popup_68507c6e4379559e543871ab80b6ca94.setContent(html_8b4234b42d1e6d3dedb37b22f6dd04d2);
+            
+        
+
+        marker_3aa5e3daa9322dce4d52d37ab0964e89.bindPopup(popup_68507c6e4379559e543871ab80b6ca94)
+        ;
+
+        
+    
+    
+            marker_3aa5e3daa9322dce4d52d37ab0964e89.bindTooltip(
+                `<div>
+                     AgroParisTech (Paris)
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_3aa5e3daa9322dce4d52d37ab0964e89.setIcon(icon_5ca75a4558991136255d6f45607807ea);
+            
+    
+            var marker_3ce4b876dafee2bdd26d8eb58fbcaa99 = L.marker(
+                [44.8404, -0.5805],
+                {
+}
+            ).addTo(feature_group_f05a8d2138b5237f6a511215a8f936f4);
+        
+    
+            var icon_e3fa6b77fd4e04e174dbd5a9d841b339 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "green",
+  "iconColor": "white",
+  "icon": "leaf",
+  "prefix": "fa",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_17a881cddb57655e82d8fb40bf4bb77f = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_2cc8d24f63547fb425586a6393ca07a5 = $(`<div id="html_2cc8d24f63547fb425586a6393ca07a5" style="width: 100.0%; height: 100.0%;">     <div style='border:2px solid green; border-radius:8px; padding:10px; max-width:250px; font-size:13px;'>         <b>Bordeaux Sciences Agro</b><br>         <i>Bordeaux</i><br>         École spécialisée en sciences agronomiques et agroalimentaires.<br>         <a href="https://www.agro-bordeaux.fr" target="_blank">https://www.agro-bordeaux.fr</a><br>         <small><b>Voies d'accès :</b> BCPST + TB</small>     </div>     </div>`)[0];
+                popup_17a881cddb57655e82d8fb40bf4bb77f.setContent(html_2cc8d24f63547fb425586a6393ca07a5);
+            
+        
+
+        marker_3ce4b876dafee2bdd26d8eb58fbcaa99.bindPopup(popup_17a881cddb57655e82d8fb40bf4bb77f)
+        ;
+
+        
+    
+    
+            marker_3ce4b876dafee2bdd26d8eb58fbcaa99.bindTooltip(
+                `<div>
+                     Bordeaux Sciences Agro (Bordeaux)
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_3ce4b876dafee2bdd26d8eb58fbcaa99.setIcon(icon_e3fa6b77fd4e04e174dbd5a9d841b339);
+            
+    
+            var marker_0b9bbfeab52fb4caf469722700315341 = L.marker(
+                [48.6921, 6.1844],
+                {
+}
+            ).addTo(feature_group_f05a8d2138b5237f6a511215a8f936f4);
+        
+    
+            var icon_8d88f419911ebe612d21619bba5d15d9 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "green",
+  "iconColor": "white",
+  "icon": "leaf",
+  "prefix": "fa",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_3b283d93a19c3e64f1499f8abe359d33 = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_9e667ab430736134ad2b5577e451e4cf = $(`<div id="html_9e667ab430736134ad2b5577e451e4cf" style="width: 100.0%; height: 100.0%;">     <div style='border:2px solid green; border-radius:8px; padding:10px; max-width:250px; font-size:13px;'>         <b>ENSAIA</b><br>         <i>Nancy</i><br>         École d’ingénieurs spécialisée en agronomie et industries alimentaires.<br>         <a href="https://www.ensia.univ-lorraine.fr" target="_blank">https://www.ensia.univ-lorraine.fr</a><br>         <small><b>Voies d'accès :</b> BCPST + TB</small>     </div>     </div>`)[0];
+                popup_3b283d93a19c3e64f1499f8abe359d33.setContent(html_9e667ab430736134ad2b5577e451e4cf);
+            
+        
+
+        marker_0b9bbfeab52fb4caf469722700315341.bindPopup(popup_3b283d93a19c3e64f1499f8abe359d33)
+        ;
+
+        
+    
+    
+            marker_0b9bbfeab52fb4caf469722700315341.bindTooltip(
+                `<div>
+                     ENSAIA (Nancy)
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_0b9bbfeab52fb4caf469722700315341.setIcon(icon_8d88f419911ebe612d21619bba5d15d9);
+            
+    
+            var marker_7bc415464e87f60a24e280a16b44e67f = L.marker(
+                [47.322, 5.0415],
+                {
+}
+            ).addTo(feature_group_f05a8d2138b5237f6a511215a8f936f4);
+        
+    
+            var icon_1dfdcb89f87ea93c25961729f45b28cd = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "green",
+  "iconColor": "white",
+  "icon": "leaf",
+  "prefix": "fa",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_0413181d087368d8ad275c8529a6a51f = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_0cf401c6f4f0d5eae8d9127005311bd5 = $(`<div id="html_0cf401c6f4f0d5eae8d9127005311bd5" style="width: 100.0%; height: 100.0%;">     <div style='border:2px solid green; border-radius:8px; padding:10px; max-width:250px; font-size:13px;'>         <b>Institut Agro Dijon</b><br>         <i>Dijon</i><br>         École d’ingénieurs en agriculture, agroalimentaire et environnement.<br>         <a href="https://institut-agro-dijon.fr" target="_blank">https://institut-agro-dijon.fr</a><br>         <small><b>Voies d'accès :</b> BCPST + TB</small>     </div>     </div>`)[0];
+                popup_0413181d087368d8ad275c8529a6a51f.setContent(html_0cf401c6f4f0d5eae8d9127005311bd5);
+            
+        
+
+        marker_7bc415464e87f60a24e280a16b44e67f.bindPopup(popup_0413181d087368d8ad275c8529a6a51f)
+        ;
+
+        
+    
+    
+            marker_7bc415464e87f60a24e280a16b44e67f.bindTooltip(
+                `<div>
+                     Institut Agro Dijon (Dijon)
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_7bc415464e87f60a24e280a16b44e67f.setIcon(icon_1dfdcb89f87ea93c25961729f45b28cd);
+            
+    
+            var marker_6be020d72fe4a96f754d22ed31caf529 = L.marker(
+                [48.1173, -1.6778],
+                {
+}
+            ).addTo(feature_group_f05a8d2138b5237f6a511215a8f936f4);
+        
+    
+            var icon_dbecb19a3eb0b7bd5c63602e22a6cb71 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "green",
+  "iconColor": "white",
+  "icon": "leaf",
+  "prefix": "fa",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_b43ddcd2b3818fb5268d7cf4121c97c6 = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_5ea878fd9ca84205a17d9abc848f80c5 = $(`<div id="html_5ea878fd9ca84205a17d9abc848f80c5" style="width: 100.0%; height: 100.0%;">     <div style='border:2px solid green; border-radius:8px; padding:10px; max-width:250px; font-size:13px;'>         <b>Institut Agro Rennes-Angers</b><br>         <i>Rennes</i><br>         École d’ingénieurs et centre de formation en agriculture et agroalimentaire.<br>         <a href="https://institut-agro-rennes-angers.fr" target="_blank">https://institut-agro-rennes-angers.fr</a><br>         <small><b>Voies d'accès :</b> BCPST + TB</small>     </div>     </div>`)[0];
+                popup_b43ddcd2b3818fb5268d7cf4121c97c6.setContent(html_5ea878fd9ca84205a17d9abc848f80c5);
+            
+        
+
+        marker_6be020d72fe4a96f754d22ed31caf529.bindPopup(popup_b43ddcd2b3818fb5268d7cf4121c97c6)
+        ;
+
+        
+    
+    
+            marker_6be020d72fe4a96f754d22ed31caf529.bindTooltip(
+                `<div>
+                     Institut Agro Rennes-Angers (Rennes)
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_6be020d72fe4a96f754d22ed31caf529.setIcon(icon_dbecb19a3eb0b7bd5c63602e22a6cb71);
+            
+    
+            var marker_917534e4f74029f113c1f6ccbfbf2d6b = L.marker(
+                [47.2186, -1.5542],
+                {
+}
+            ).addTo(feature_group_f05a8d2138b5237f6a511215a8f936f4);
+        
+    
+            var icon_e3ff0640405ea93fcbdfb2c334b85bcf = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "green",
+  "iconColor": "white",
+  "icon": "leaf",
+  "prefix": "fa",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_6e75a0403d42608c8ae0b3ceecf6096f = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_ab5bf62880f56d989b120cf0ddbbc3cc = $(`<div id="html_ab5bf62880f56d989b120cf0ddbbc3cc" style="width: 100.0%; height: 100.0%;">     <div style='border:2px solid green; border-radius:8px; padding:10px; max-width:250px; font-size:13px;'>         <b>ONIRIS Nantes</b><br>         <i>Nantes</i><br>         École vétérinaire et agroalimentaire de Nantes formant vétérinaires et ingénieurs.<br>         <a href="https://www.oniris-nantes.fr" target="_blank">https://www.oniris-nantes.fr</a><br>         <small><b>Voies d'accès :</b> BCPST + TB</small>     </div>     </div>`)[0];
+                popup_6e75a0403d42608c8ae0b3ceecf6096f.setContent(html_ab5bf62880f56d989b120cf0ddbbc3cc);
+            
+        
+
+        marker_917534e4f74029f113c1f6ccbfbf2d6b.bindPopup(popup_6e75a0403d42608c8ae0b3ceecf6096f)
+        ;
+
+        
+    
+    
+            marker_917534e4f74029f113c1f6ccbfbf2d6b.bindTooltip(
+                `<div>
+                     ONIRIS Nantes (Nantes)
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_917534e4f74029f113c1f6ccbfbf2d6b.setIcon(icon_e3ff0640405ea93fcbdfb2c334b85bcf);
+            
+    
+            var marker_0998e358b1db778f19e50ef7129fd58d = L.marker(
+                [45.7589, 3.1115],
+                {
+}
+            ).addTo(feature_group_f05a8d2138b5237f6a511215a8f936f4);
+        
+    
+            var icon_327d93c8e436ec448c776df3e47fa420 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "green",
+  "iconColor": "white",
+  "icon": "leaf",
+  "prefix": "fa",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_7fddc68092636425f84b3539903ccb92 = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_2fb79f8c2519ab3328a74657b05f2afc = $(`<div id="html_2fb79f8c2519ab3328a74657b05f2afc" style="width: 100.0%; height: 100.0%;">     <div style='border:2px solid green; border-radius:8px; padding:10px; max-width:250px; font-size:13px;'>         <b>VetAgro Sup (campus Agro Clermont-Ferrand)</b><br>         <i>Clermont-Ferrand</i><br>         Campus agronomique de VetAgro Sup, école d&#x27;ingénieurs en sciences du vivant et de l&#x27;agroalimentaire.<br>         <a href="https://www.vetagro-sup.fr" target="_blank">https://www.vetagro-sup.fr</a><br>         <small><b>Voies d'accès :</b> BCPST + TB</small>     </div>     </div>`)[0];
+                popup_7fddc68092636425f84b3539903ccb92.setContent(html_2fb79f8c2519ab3328a74657b05f2afc);
+            
+        
+
+        marker_0998e358b1db778f19e50ef7129fd58d.bindPopup(popup_7fddc68092636425f84b3539903ccb92)
+        ;
+
+        
+    
+    
+            marker_0998e358b1db778f19e50ef7129fd58d.bindTooltip(
+                `<div>
+                     VetAgro Sup (campus Agro Clermont-Ferrand) (Clermont-Ferrand)
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_0998e358b1db778f19e50ef7129fd58d.setIcon(icon_327d93c8e436ec448c776df3e47fa420);
+            
+    
+            var marker_0b1f6583747a54b31cc47c68322db72a = L.marker(
+                [48.1902, 6.4381],
+                {
+}
+            ).addTo(feature_group_f05a8d2138b5237f6a511215a8f936f4);
+        
+    
+            var icon_bdab9054a2bf2be09a66b3c104ffc8ad = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "green",
+  "iconColor": "white",
+  "icon": "leaf",
+  "prefix": "fa",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_a8ef7182759016d61ff9a1769dd10c92 = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_da9315508dbc6f2c64188b25f68f1cdc = $(`<div id="html_da9315508dbc6f2c64188b25f68f1cdc" style="width: 100.0%; height: 100.0%;">     <div style='border:2px solid green; border-radius:8px; padding:10px; max-width:250px; font-size:13px;'>         <b>Enstib</b><br>         <i>Epinal</i><br>         École d’ingénieurs spécialisée en bois et matériaux durables.<br>         <a href="https://www.enstib.univ-lorraine.fr" target="_blank">https://www.enstib.univ-lorraine.fr</a><br>         <small><b>Voies d'accès :</b> BCPST + TB</small>     </div>     </div>`)[0];
+                popup_a8ef7182759016d61ff9a1769dd10c92.setContent(html_da9315508dbc6f2c64188b25f68f1cdc);
+            
+        
+
+        marker_0b1f6583747a54b31cc47c68322db72a.bindPopup(popup_a8ef7182759016d61ff9a1769dd10c92)
+        ;
+
+        
+    
+    
+            marker_0b1f6583747a54b31cc47c68322db72a.bindTooltip(
+                `<div>
+                     Enstib (Epinal)
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_0b1f6583747a54b31cc47c68322db72a.setIcon(icon_bdab9054a2bf2be09a66b3c104ffc8ad);
+            
+    
+            feature_group_f05a8d2138b5237f6a511215a8f936f4.addTo(map_cb9efb939087d4a2ba8f2e0ef33dab41);
+        
+    
+            var feature_group_d1699b26b2639f1b7c9d898210165418 = L.featureGroup(
+                {
+}
+            );
+        
+    
+            var marker_b376cefc6c738284c39d0da6229cf9ca = L.marker(
+                [48.8075, 2.4343],
+                {
+}
+            ).addTo(feature_group_d1699b26b2639f1b7c9d898210165418);
+        
+    
+            var icon_926b5e269fc8addf4a0067eeb27976a6 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "blue",
+  "iconColor": "white",
+  "icon": "paw",
+  "prefix": "fa",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_91ed8b8a8e67e2b41fbec0531bc06e25 = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_7123e3976250148d8a92e1172ebaa454 = $(`<div id="html_7123e3976250148d8a92e1172ebaa454" style="width: 100.0%; height: 100.0%;">     <div style='border:2px solid blue; border-radius:8px; padding:10px; max-width:250px; font-size:13px;'>         <b>École Nationale Vétérinaire d&#x27;Alfort (ENVA)</b><br>         <i>Maisons-Alfort</i><br>         École vétérinaire historique de la région parisienne formant des vétérinaires et chercheurs.<br>         <a href="https://www.vet-alfort.fr" target="_blank">https://www.vet-alfort.fr</a><br>         <small><b>Voies d'accès :</b> BCPST uniquement</small>     </div>     </div>`)[0];
+                popup_91ed8b8a8e67e2b41fbec0531bc06e25.setContent(html_7123e3976250148d8a92e1172ebaa454);
+            
+        
+
+        marker_b376cefc6c738284c39d0da6229cf9ca.bindPopup(popup_91ed8b8a8e67e2b41fbec0531bc06e25)
+        ;
+
+        
+    
+    
+            marker_b376cefc6c738284c39d0da6229cf9ca.bindTooltip(
+                `<div>
+                     École Nationale Vétérinaire d'Alfort (ENVA) (Maisons-Alfort)
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_b376cefc6c738284c39d0da6229cf9ca.setIcon(icon_926b5e269fc8addf4a0067eeb27976a6);
+            
+    
+            var marker_7d5aab16b6cb599117c731fc60589c75 = L.marker(
+                [43.565, 1.481],
+                {
+}
+            ).addTo(feature_group_d1699b26b2639f1b7c9d898210165418);
+        
+    
+            var icon_f6a8050926dd11d5bf7161486b2f63db = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "blue",
+  "iconColor": "white",
+  "icon": "paw",
+  "prefix": "fa",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_b33f4729041b75fd542d4c024db28a03 = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_8d1f60c57c1d19c39901da433cd30153 = $(`<div id="html_8d1f60c57c1d19c39901da433cd30153" style="width: 100.0%; height: 100.0%;">     <div style='border:2px solid blue; border-radius:8px; padding:10px; max-width:250px; font-size:13px;'>         <b>École Nationale Vétérinaire de Toulouse (ENVT)</b><br>         <i>Toulouse</i><br>         Grande école vétérinaire du Sud-Ouest, formant vétérinaires et chercheurs.<br>         <a href="https://envt.fr" target="_blank">https://envt.fr</a><br>         <small><b>Voies d'accès :</b> BCPST uniquement</small>     </div>     </div>`)[0];
+                popup_b33f4729041b75fd542d4c024db28a03.setContent(html_8d1f60c57c1d19c39901da433cd30153);
+            
+        
+
+        marker_7d5aab16b6cb599117c731fc60589c75.bindPopup(popup_b33f4729041b75fd542d4c024db28a03)
+        ;
+
+        
+    
+    
+            marker_7d5aab16b6cb599117c731fc60589c75.bindTooltip(
+                `<div>
+                     École Nationale Vétérinaire de Toulouse (ENVT) (Toulouse)
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_7d5aab16b6cb599117c731fc60589c75.setIcon(icon_f6a8050926dd11d5bf7161486b2f63db);
+            
+    
+            var marker_f1b1a3162bd9a621174ba568a3c81928 = L.marker(
+                [45.748, 4.8467],
+                {
+}
+            ).addTo(feature_group_d1699b26b2639f1b7c9d898210165418);
+        
+    
+            var icon_828ef67c2d5fe1a4523fb8dfe1164651 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "blue",
+  "iconColor": "white",
+  "icon": "paw",
+  "prefix": "fa",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_f0d4ac6a92b2bcad8160e2b4e26343b1 = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_a2c4b80112c017ec7b7e09d011613be7 = $(`<div id="html_a2c4b80112c017ec7b7e09d011613be7" style="width: 100.0%; height: 100.0%;">     <div style='border:2px solid blue; border-radius:8px; padding:10px; max-width:250px; font-size:13px;'>         <b>VetAgro Sup (campus Véto Lyon)</b><br>         <i>Lyon</i><br>         Campus vétérinaire de VetAgro Sup, formant vétérinaires et chercheurs.<br>         <a href="https://www.vetagro-sup.fr" target="_blank">https://www.vetagro-sup.fr</a><br>         <small><b>Voies d'accès :</b> BCPST uniquement</small>     </div>     </div>`)[0];
+                popup_f0d4ac6a92b2bcad8160e2b4e26343b1.setContent(html_a2c4b80112c017ec7b7e09d011613be7);
+            
+        
+
+        marker_f1b1a3162bd9a621174ba568a3c81928.bindPopup(popup_f0d4ac6a92b2bcad8160e2b4e26343b1)
+        ;
+
+        
+    
+    
+            marker_f1b1a3162bd9a621174ba568a3c81928.bindTooltip(
+                `<div>
+                     VetAgro Sup (campus Véto Lyon) (Lyon)
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_f1b1a3162bd9a621174ba568a3c81928.setIcon(icon_828ef67c2d5fe1a4523fb8dfe1164651);
+            
+    
+            var marker_4b06f58470249643964835c1808f81ed = L.marker(
+                [47.2186, -1.5542],
+                {
+}
+            ).addTo(feature_group_d1699b26b2639f1b7c9d898210165418);
+        
+    
+            var icon_99765c92c8c6df02c77481bf5a764366 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "blue",
+  "iconColor": "white",
+  "icon": "paw",
+  "prefix": "fa",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_3c7efb8081bf7c69aee922e04abd1a64 = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_58e44d0b89c538accb5fc39fc07c8a40 = $(`<div id="html_58e44d0b89c538accb5fc39fc07c8a40" style="width: 100.0%; height: 100.0%;">     <div style='border:2px solid blue; border-radius:8px; padding:10px; max-width:250px; font-size:13px;'>         <b>ONIRIS Nantes</b><br>         <i>Nantes</i><br>         École vétérinaire et agroalimentaire de Nantes formant vétérinaires et ingénieurs.<br>         <a href="https://www.oniris-nantes.fr" target="_blank">https://www.oniris-nantes.fr</a><br>         <small><b>Voies d'accès :</b> BCPST + TB</small>     </div>     </div>`)[0];
+                popup_3c7efb8081bf7c69aee922e04abd1a64.setContent(html_58e44d0b89c538accb5fc39fc07c8a40);
+            
+        
+
+        marker_4b06f58470249643964835c1808f81ed.bindPopup(popup_3c7efb8081bf7c69aee922e04abd1a64)
+        ;
+
+        
+    
+    
+            marker_4b06f58470249643964835c1808f81ed.bindTooltip(
+                `<div>
+                     ONIRIS Nantes (Nantes)
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_4b06f58470249643964835c1808f81ed.setIcon(icon_99765c92c8c6df02c77481bf5a764366);
+            
+    
+            feature_group_d1699b26b2639f1b7c9d898210165418.addTo(map_cb9efb939087d4a2ba8f2e0ef33dab41);
+        
+    
+            var feature_group_6afa8f887ce1d271c32dae69737763b8 = L.featureGroup(
+                {
+}
+            );
+        
+    
+            var marker_d5e8e4c7ef1b1cdf47f7a185798e7c8a = L.marker(
+                [48.5846, 7.7509],
+                {
+}
+            ).addTo(feature_group_6afa8f887ce1d271c32dae69737763b8);
+        
+    
+            var icon_e12402a56d4f389c6c88294f838dd7ab = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "orange",
+  "iconColor": "white",
+  "icon": "cog",
+  "prefix": "fa",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_df4df2974f9178031aa0ff9fd4658978 = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_e7ed470e33d437374b88df9bc9b96f7b = $(`<div id="html_e7ed470e33d437374b88df9bc9b96f7b" style="width: 100.0%; height: 100.0%;">     <div style='border:2px solid orange; border-radius:8px; padding:10px; max-width:250px; font-size:13px;'>         <b>ENGEES</b><br>         <i>Strasbourg</i><br>         École nationale du génie de l’eau et de l’environnement.<br>         <a href="https://engees.unistra.fr" target="_blank">https://engees.unistra.fr</a><br>         <small><b>Voies d'accès :</b> BCPST uniquement</small>     </div>     </div>`)[0];
+                popup_df4df2974f9178031aa0ff9fd4658978.setContent(html_e7ed470e33d437374b88df9bc9b96f7b);
+            
+        
+
+        marker_d5e8e4c7ef1b1cdf47f7a185798e7c8a.bindPopup(popup_df4df2974f9178031aa0ff9fd4658978)
+        ;
+
+        
+    
+    
+            marker_d5e8e4c7ef1b1cdf47f7a185798e7c8a.bindTooltip(
+                `<div>
+                     ENGEES (Strasbourg)
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_d5e8e4c7ef1b1cdf47f7a185798e7c8a.setIcon(icon_e12402a56d4f389c6c88294f838dd7ab);
+            
+    
+            var marker_47cf621ccb896abc2f628186e64a46ad = L.marker(
+                [48.8566, 2.3522],
+                {
+}
+            ).addTo(feature_group_6afa8f887ce1d271c32dae69737763b8);
+        
+    
+            var icon_d7673e810550b7c01a7532ef9cf4d6a2 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "orange",
+  "iconColor": "white",
+  "icon": "cog",
+  "prefix": "fa",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_6dcb27161df80542cdbef7979d65df9d = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_bfa69e6a22791d0b0e34b662abbef8f8 = $(`<div id="html_bfa69e6a22791d0b0e34b662abbef8f8" style="width: 100.0%; height: 100.0%;">     <div style='border:2px solid orange; border-radius:8px; padding:10px; max-width:250px; font-size:13px;'>         <b>Géodata Paris</b><br>         <i>Paris</i><br>         École spécialisée en géomatique et gestion de données géographiques.<br>         <a href="https://www.geodata-paris.fr" target="_blank">https://www.geodata-paris.fr</a><br>         <small><b>Voies d'accès :</b> BCPST uniquement</small>     </div>     </div>`)[0];
+                popup_6dcb27161df80542cdbef7979d65df9d.setContent(html_bfa69e6a22791d0b0e34b662abbef8f8);
+            
+        
+
+        marker_47cf621ccb896abc2f628186e64a46ad.bindPopup(popup_6dcb27161df80542cdbef7979d65df9d)
+        ;
+
+        
+    
+    
+            marker_47cf621ccb896abc2f628186e64a46ad.bindTooltip(
+                `<div>
+                     Géodata Paris (Paris)
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_47cf621ccb896abc2f628186e64a46ad.setIcon(icon_d7673e810550b7c01a7532ef9cf4d6a2);
+            
+    
+            feature_group_6afa8f887ce1d271c32dae69737763b8.addTo(map_cb9efb939087d4a2ba8f2e0ef33dab41);
+        
+    
+            var feature_group_d46138bedbfdea6e213a8af335d13717 = L.featureGroup(
+                {
+}
+            );
+        
+    
+            var marker_2bd877bd26449dc28caf181691c4f8eb = L.marker(
+                [48.1173, -1.6778],
+                {
+}
+            ).addTo(feature_group_d46138bedbfdea6e213a8af335d13717);
+        
+    
+            var icon_b92d60e834b71aad2e994b501aff66db = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "red",
+  "iconColor": "white",
+  "icon": "cog",
+  "prefix": "fa",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_edae80dd6d64380e87a9cdc34e98cc9f = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_f9e7ec2093d76f7810c30c7d085e04ec = $(`<div id="html_f9e7ec2093d76f7810c30c7d085e04ec" style="width: 100.0%; height: 100.0%;">     <div style='border:2px solid red; border-radius:8px; padding:10px; max-width:250px; font-size:13px;'>         <b>ESIR</b><br>         <i>Rennes</i><br>         École d’ingénieurs en systèmes électroniques et informatiques.<br>         <a href="https://www.esir.fr" target="_blank">https://www.esir.fr</a><br>         <small><b>Voies d'accès :</b> BCPST + TB</small>     </div>     </div>`)[0];
+                popup_edae80dd6d64380e87a9cdc34e98cc9f.setContent(html_f9e7ec2093d76f7810c30c7d085e04ec);
+            
+        
+
+        marker_2bd877bd26449dc28caf181691c4f8eb.bindPopup(popup_edae80dd6d64380e87a9cdc34e98cc9f)
+        ;
+
+        
+    
+    
+            marker_2bd877bd26449dc28caf181691c4f8eb.bindTooltip(
+                `<div>
+                     ESIR (Rennes)
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_2bd877bd26449dc28caf181691c4f8eb.setIcon(icon_b92d60e834b71aad2e994b501aff66db);
+            
+    
+            var marker_1553d5509534e1cd5a2e495e7466031a = L.marker(
+                [47.2376, 6.0241],
+                {
+}
+            ).addTo(feature_group_d46138bedbfdea6e213a8af335d13717);
+        
+    
+            var icon_bcb4743632a1f28260d7ebb314a7e891 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "red",
+  "iconColor": "white",
+  "icon": "cog",
+  "prefix": "fa",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_26a96e5e5a9997f11a92a2b586550cec = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_90cf687b4153e2718b3ed9a8a66beb6f = $(`<div id="html_90cf687b4153e2718b3ed9a8a66beb6f" style="width: 100.0%; height: 100.0%;">     <div style='border:2px solid red; border-radius:8px; padding:10px; max-width:250px; font-size:13px;'>         <b>ISIFC</b><br>         <i>Besançon</i><br>         École d’ingénieurs en sciences de la santé et instrumentation médicale.<br>         <a href="https://www.isifc.univ-fcomte.fr" target="_blank">https://www.isifc.univ-fcomte.fr</a><br>         <small><b>Voies d'accès :</b> BCPST + TB</small>     </div>     </div>`)[0];
+                popup_26a96e5e5a9997f11a92a2b586550cec.setContent(html_90cf687b4153e2718b3ed9a8a66beb6f);
+            
+        
+
+        marker_1553d5509534e1cd5a2e495e7466031a.bindPopup(popup_26a96e5e5a9997f11a92a2b586550cec)
+        ;
+
+        
+    
+    
+            marker_1553d5509534e1cd5a2e495e7466031a.bindTooltip(
+                `<div>
+                     ISIFC (Besançon)
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_1553d5509534e1cd5a2e495e7466031a.setIcon(icon_bcb4743632a1f28260d7ebb314a7e891);
+            
+    
+            var marker_8f587e38cb39146d36d5f22cc8172e13 = L.marker(
+                [47.4784, -0.5632],
+                {
+}
+            ).addTo(feature_group_d46138bedbfdea6e213a8af335d13717);
+        
+    
+            var icon_10325f6b2fc21666159550267645d9e0 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "red",
+  "iconColor": "white",
+  "icon": "cog",
+  "prefix": "fa",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_7930905f2c2e89bda57232fb1b1f5a88 = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_cdde2a215f09325138be12b201233047 = $(`<div id="html_cdde2a215f09325138be12b201233047" style="width: 100.0%; height: 100.0%;">     <div style='border:2px solid red; border-radius:8px; padding:10px; max-width:250px; font-size:13px;'>         <b>Polytech Angers</b><br>         <i>Angers</i><br>         École d’ingénieurs généraliste proposant diverses spécialités.<br>         <a href="https://www.polytech-angers.fr" target="_blank">https://www.polytech-angers.fr</a><br>         <small><b>Voies d'accès :</b> BCPST + TB</small>     </div>     </div>`)[0];
+                popup_7930905f2c2e89bda57232fb1b1f5a88.setContent(html_cdde2a215f09325138be12b201233047);
+            
+        
+
+        marker_8f587e38cb39146d36d5f22cc8172e13.bindPopup(popup_7930905f2c2e89bda57232fb1b1f5a88)
+        ;
+
+        
+    
+    
+            marker_8f587e38cb39146d36d5f22cc8172e13.bindTooltip(
+                `<div>
+                     Polytech Angers (Angers)
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_8f587e38cb39146d36d5f22cc8172e13.setIcon(icon_10325f6b2fc21666159550267645d9e0);
+            
+    
+            var marker_7a1ce69a919e4a4c991a26557ba6f31d = L.marker(
+                [45.7772, 3.087],
+                {
+}
+            ).addTo(feature_group_d46138bedbfdea6e213a8af335d13717);
+        
+    
+            var icon_db72660e8be843b10f9e72c439bb5b06 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "red",
+  "iconColor": "white",
+  "icon": "cog",
+  "prefix": "fa",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_06e3de4afd62329b37f3c02164c914fa = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_182f096375fab747c7a9278e635c1a04 = $(`<div id="html_182f096375fab747c7a9278e635c1a04" style="width: 100.0%; height: 100.0%;">     <div style='border:2px solid red; border-radius:8px; padding:10px; max-width:250px; font-size:13px;'>         <b>Polytech Clermont</b><br>         <i>Clermont-Ferrand</i><br>         École d’ingénieurs généraliste en sciences et technologies.<br>         <a href="https://www.polytech-clermont.fr" target="_blank">https://www.polytech-clermont.fr</a><br>         <small><b>Voies d'accès :</b> BCPST + TB</small>     </div>     </div>`)[0];
+                popup_06e3de4afd62329b37f3c02164c914fa.setContent(html_182f096375fab747c7a9278e635c1a04);
+            
+        
+
+        marker_7a1ce69a919e4a4c991a26557ba6f31d.bindPopup(popup_06e3de4afd62329b37f3c02164c914fa)
+        ;
+
+        
+    
+    
+            marker_7a1ce69a919e4a4c991a26557ba6f31d.bindTooltip(
+                `<div>
+                     Polytech Clermont (Clermont-Ferrand)
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_7a1ce69a919e4a4c991a26557ba6f31d.setIcon(icon_db72660e8be843b10f9e72c439bb5b06);
+            
+    
+            var marker_61d115a4c27b750eecdb5ac1bc1cfcad = L.marker(
+                [47.3444, 0.7222],
+                {
+}
+            ).addTo(feature_group_d46138bedbfdea6e213a8af335d13717);
+        
+    
+            var icon_17f4418b40f1f01e6963b727d18b6114 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "red",
+  "iconColor": "white",
+  "icon": "cog",
+  "prefix": "fa",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_fcc930b0027523d70ddaa4391756fd49 = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_83ad4fd34b16cf5fc5b12dfcddd025e2 = $(`<div id="html_83ad4fd34b16cf5fc5b12dfcddd025e2" style="width: 100.0%; height: 100.0%;">     <div style='border:2px solid red; border-radius:8px; padding:10px; max-width:250px; font-size:13px;'>         <b>Polytech Tours</b><br>         <i>Tours</i><br>         École d’ingénieurs généraliste proposant différentes spécialités techniques.<br>         <a href="https://www.polytech-tours.fr" target="_blank">https://www.polytech-tours.fr</a><br>         <small><b>Voies d'accès :</b> BCPST + TB</small>     </div>     </div>`)[0];
+                popup_fcc930b0027523d70ddaa4391756fd49.setContent(html_83ad4fd34b16cf5fc5b12dfcddd025e2);
+            
+        
+
+        marker_61d115a4c27b750eecdb5ac1bc1cfcad.bindPopup(popup_fcc930b0027523d70ddaa4391756fd49)
+        ;
+
+        
+    
+    
+            marker_61d115a4c27b750eecdb5ac1bc1cfcad.bindTooltip(
+                `<div>
+                     Polytech Tours (Tours)
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_61d115a4c27b750eecdb5ac1bc1cfcad.setIcon(icon_17f4418b40f1f01e6963b727d18b6114);
+            
+    
+            feature_group_d46138bedbfdea6e213a8af335d13717.addTo(map_cb9efb939087d4a2ba8f2e0ef33dab41);
+        
+    
+            var feature_group_8e792508fca070e064f532f7f256aa12 = L.featureGroup(
+                {
+}
+            );
+        
+    
+            var marker_d63efdc8bb28defb4210bd3534440a99 = L.marker(
+                [45.7833, 4.8723],
+                {
+}
+            ).addTo(feature_group_8e792508fca070e064f532f7f256aa12);
+        
+    
+            var icon_c5f397bf48d7d366bbdfea82706f3c71 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "purple",
+  "iconColor": "white",
+  "icon": "gears",
+  "prefix": "fa",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_ea2c842352f811cf6352eaa7f1587539 = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_a9396c6b47c0926ce1c3767ed61d9158 = $(`<div id="html_a9396c6b47c0926ce1c3767ed61d9158" style="width: 100.0%; height: 100.0%;">     <div style='border:2px solid purple; border-radius:8px; padding:10px; max-width:250px; font-size:13px;'>         <b>INSA Lyon</b><br>         <i>Lyon</i><br>         Institut National des Sciences Appliquées de Lyon.<br>         <a href="https://www.insa-lyon.fr" target="_blank">https://www.insa-lyon.fr</a><br>         <small><b>Voies d'accès :</b> BCPST + autres voies</small>     </div>     </div>`)[0];
+                popup_ea2c842352f811cf6352eaa7f1587539.setContent(html_a9396c6b47c0926ce1c3767ed61d9158);
+            
+        
+
+        marker_d63efdc8bb28defb4210bd3534440a99.bindPopup(popup_ea2c842352f811cf6352eaa7f1587539)
+        ;
+
+        
+    
+    
+            marker_d63efdc8bb28defb4210bd3534440a99.bindTooltip(
+                `<div>
+                     INSA Lyon (Lyon)
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_d63efdc8bb28defb4210bd3534440a99.setIcon(icon_c5f397bf48d7d366bbdfea82706f3c71);
+            
+    
+            var marker_3ad3ac8252822f706c4685b8982eb4b0 = L.marker(
+                [49.4431, 1.0993],
+                {
+}
+            ).addTo(feature_group_8e792508fca070e064f532f7f256aa12);
+        
+    
+            var icon_f161b25317123f0632750ad5c974cc7b = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "purple",
+  "iconColor": "white",
+  "icon": "gears",
+  "prefix": "fa",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_98cb2b1162b7d2a33ae69c11842c5b72 = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_598531eca953b19f298a376838fbb25b = $(`<div id="html_598531eca953b19f298a376838fbb25b" style="width: 100.0%; height: 100.0%;">     <div style='border:2px solid purple; border-radius:8px; padding:10px; max-width:250px; font-size:13px;'>         <b>INSA Rouen</b><br>         <i>Rouen</i><br>         Institut National des Sciences Appliquées de Rouen Normandie.<br>         <a href="https://www.insa-rouen.fr" target="_blank">https://www.insa-rouen.fr</a><br>         <small><b>Voies d'accès :</b> BCPST + autres voies</small>     </div>     </div>`)[0];
+                popup_98cb2b1162b7d2a33ae69c11842c5b72.setContent(html_598531eca953b19f298a376838fbb25b);
+            
+        
+
+        marker_3ad3ac8252822f706c4685b8982eb4b0.bindPopup(popup_98cb2b1162b7d2a33ae69c11842c5b72)
+        ;
+
+        
+    
+    
+            marker_3ad3ac8252822f706c4685b8982eb4b0.bindTooltip(
+                `<div>
+                     INSA Rouen (Rouen)
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_3ad3ac8252822f706c4685b8982eb4b0.setIcon(icon_f161b25317123f0632750ad5c974cc7b);
+            
+    
+            var marker_bb69a1b8147f881b9f705890667adddb = L.marker(
+                [43.565, 1.476],
+                {
+}
+            ).addTo(feature_group_8e792508fca070e064f532f7f256aa12);
+        
+    
+            var icon_275febf2d04b94a0b9675b023f495916 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "purple",
+  "iconColor": "white",
+  "icon": "gears",
+  "prefix": "fa",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_997a7990c2b71ea18b460aa2faf82408 = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_930fe96de7fbc48254b6fca92dedcea4 = $(`<div id="html_930fe96de7fbc48254b6fca92dedcea4" style="width: 100.0%; height: 100.0%;">     <div style='border:2px solid purple; border-radius:8px; padding:10px; max-width:250px; font-size:13px;'>         <b>INSA Toulouse</b><br>         <i>Toulouse</i><br>         Institut National des Sciences Appliquées de Toulouse.<br>         <a href="https://www.insa-toulouse.fr" target="_blank">https://www.insa-toulouse.fr</a><br>         <small><b>Voies d'accès :</b> BCPST + autres voies</small>     </div>     </div>`)[0];
+                popup_997a7990c2b71ea18b460aa2faf82408.setContent(html_930fe96de7fbc48254b6fca92dedcea4);
+            
+        
+
+        marker_bb69a1b8147f881b9f705890667adddb.bindPopup(popup_997a7990c2b71ea18b460aa2faf82408)
+        ;
+
+        
+    
+    
+            marker_bb69a1b8147f881b9f705890667adddb.bindTooltip(
+                `<div>
+                     INSA Toulouse (Toulouse)
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_bb69a1b8147f881b9f705890667adddb.setIcon(icon_275febf2d04b94a0b9675b023f495916);
+            
+    
+            var marker_af09ce26d258ccbd630fec2d2fe64d4e = L.marker(
+                [43.6056, 2.2416],
+                {
+}
+            ).addTo(feature_group_8e792508fca070e064f532f7f256aa12);
+        
+    
+            var icon_d080ec5410dd883f138b93d1cf0f3f6e = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "purple",
+  "iconColor": "white",
+  "icon": "gears",
+  "prefix": "fa",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_2cfc6f4281256a67e356d1a5c15dd740 = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_25e0e0384483a1a6afa20ee57ebe76e3 = $(`<div id="html_25e0e0384483a1a6afa20ee57ebe76e3" style="width: 100.0%; height: 100.0%;">     <div style='border:2px solid purple; border-radius:8px; padding:10px; max-width:250px; font-size:13px;'>         <b>INSA Castres</b><br>         <i>Castres</i><br>         Site de Castres du groupe INSA.<br>         <a href="https://www.insa-cvl.fr" target="_blank">https://www.insa-cvl.fr</a><br>         <small><b>Voies d'accès :</b> BCPST + autres voies</small>     </div>     </div>`)[0];
+                popup_2cfc6f4281256a67e356d1a5c15dd740.setContent(html_25e0e0384483a1a6afa20ee57ebe76e3);
+            
+        
+
+        marker_af09ce26d258ccbd630fec2d2fe64d4e.bindPopup(popup_2cfc6f4281256a67e356d1a5c15dd740)
+        ;
+
+        
+    
+    
+            marker_af09ce26d258ccbd630fec2d2fe64d4e.bindTooltip(
+                `<div>
+                     INSA Castres (Castres)
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_af09ce26d258ccbd630fec2d2fe64d4e.setIcon(icon_d080ec5410dd883f138b93d1cf0f3f6e);
+            
+    
+            feature_group_8e792508fca070e064f532f7f256aa12.addTo(map_cb9efb939087d4a2ba8f2e0ef33dab41);
+        
+    
+            var feature_group_2323c98b79781fe2b8cf0755032c92ec = L.featureGroup(
+                {
+}
+            );
+        
+    
+            var marker_e52c74836b8cf063029d62470b5f538a = L.marker(
+                [45.764, 4.8357],
+                {
+}
+            ).addTo(feature_group_2323c98b79781fe2b8cf0755032c92ec);
+        
+    
+            var icon_4e659b0de2b637af5fd1ac2900ecc6dd = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "beige",
+  "iconColor": "white",
+  "icon": "university",
+  "prefix": "fa",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_12c9a8c9d99364dd65bf045537d81526 = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_0f12a1c75f94409fd7cb0254e88ffac3 = $(`<div id="html_0f12a1c75f94409fd7cb0254e88ffac3" style="width: 100.0%; height: 100.0%;">     <div style='border:2px solid beige; border-radius:8px; padding:10px; max-width:250px; font-size:13px;'>         <b>Master de microbiologie Université Lyon 1</b><br>         <i>Lyon</i><br>         Formation universitaire en microbiologie et biotechnologies.<br>         <a href="https://www.univ-lyon1.fr" target="_blank">https://www.univ-lyon1.fr</a><br>         <small><b>Voies d'accès :</b> BCPST + TB</small>     </div>     </div>`)[0];
+                popup_12c9a8c9d99364dd65bf045537d81526.setContent(html_0f12a1c75f94409fd7cb0254e88ffac3);
+            
+        
+
+        marker_e52c74836b8cf063029d62470b5f538a.bindPopup(popup_12c9a8c9d99364dd65bf045537d81526)
+        ;
+
+        
+    
+    
+            marker_e52c74836b8cf063029d62470b5f538a.bindTooltip(
+                `<div>
+                     Master de microbiologie Université Lyon 1 (Lyon)
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_e52c74836b8cf063029d62470b5f538a.setIcon(icon_4e659b0de2b637af5fd1ac2900ecc6dd);
+            
+    
+            feature_group_2323c98b79781fe2b8cf0755032c92ec.addTo(map_cb9efb939087d4a2ba8f2e0ef33dab41);
+        
+    
+            var layer_control_4f378afd453c054e09cf2cb2a9a6b12a_layers = {
+                base_layers : {
+                    "openstreetmap" : tile_layer_f48a097f22f74caa6e1d0202f9907d1c,
+                },
+                overlays :  {
+                    "\u00c9coles Agro" : feature_group_f05a8d2138b5237f6a511215a8f936f4,
+                    "\u00c9coles V\u00e9to" : feature_group_d1699b26b2639f1b7c9d898210165418,
+                    "\u00c9coles G2E" : feature_group_6afa8f887ce1d271c32dae69737763b8,
+                    "\u00c9coles Polytech" : feature_group_d46138bedbfdea6e213a8af335d13717,
+                    "\u00c9coles INSA" : feature_group_8e792508fca070e064f532f7f256aa12,
+                    "Universit\u00e9" : feature_group_2323c98b79781fe2b8cf0755032c92ec,
+                },
+            };
+            let layer_control_4f378afd453c054e09cf2cb2a9a6b12a = L.control.layers(
+                layer_control_4f378afd453c054e09cf2cb2a9a6b12a_layers.base_layers,
+                layer_control_4f378afd453c054e09cf2cb2a9a6b12a_layers.overlays,
+                {
+  "position": "topright",
+  "collapsed": false,
+  "autoZIndex": true,
+}
+            ).addTo(map_cb9efb939087d4a2ba8f2e0ef33dab41);
+
+        
+</script>
+</html>
